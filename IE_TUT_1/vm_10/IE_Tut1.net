@@ -1,0 +1,11 @@
+* Z:\home\adi\tut\IE_Tut1.asc
+V1 N001 0 SINE(0 10 50)
+R1 N002 N001 1k
+D1 0 N002 BZX84C10L
+D2 N002 P001 1N4148
+V2 P001 0 5
+.model D D
+.lib C:\users\adi\AppData\Local\LTspice\lib\cmp\standard.dio
+.tran 100ms
+.backanno
+.end

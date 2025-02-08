@@ -1,0 +1,44 @@
+html{
+	/* background-color: #121212; */
+	/* color: #aaaaaa; */
+	font-family: "Cascadia Mono NF";
+	font-size: 1.99rem;
+	font-weight: bold;
+}
+
+table {
+	margin: 1rem;
+	margin-top: 2rem;
+	border: 5px solid #000000;
+	border-collapse: collapse;
+}
+th, td {
+	text-align: center;
+	border: 5px solid #000000;
+	padding: 1.5rem;
+}
+
+.day {
+	background-color: #dddddd;
+	/* background-color: #121212; */
+}
+.time {
+	background-color: #dddddd;
+	/* background-color: #121212; */
+}
+
+.red {
+	background-color: #ea696255;
+}
+.cyan {
+	background-color: #56b6c255;
+}
+.blue {
+	background-color: #7daea355;
+}
+.magenta {
+	background-color: #d3869b55;
+}
+.green {
+	background-color: #a9b66555;
+}

@@ -1,0 +1,3 @@
+- Gradient Operator
+- Level Surface: Phi will remain constant throughout the curve
+	- Direction of gradient is :""
