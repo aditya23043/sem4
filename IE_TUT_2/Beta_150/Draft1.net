@@ -1,0 +1,14 @@
+* Z:\mnt\hdd\repo\sem4\IE_TUT_2\Draft1.asc
+Rc N001 P001 3.3k
+Q1 P001 N003 N004 0 2N2222_2023043_150B
+V1 N001 0 12V
+RE N004 0 1.2k
+RTH N003 N002 1279.4
+Vth N002 0 3.268
+.model NPN NPN
+.model PNP PNP
+.lib C:\users\adi\AppData\Local\LTspice\lib\cmp\standard.bjt
+.tran 1s
+.model 2N2222_2023043_150B NPN(IS=1E-14 VAF=100 BF=150 IKF=0.3 XTB=1.5 BR=3 CJC=8E-12 CJE=25E-12 TR=100E-9 TF=400E-12 ITF=1 VTF=2 XTF=3 RB=10 RC=.3 RE=.2 Vceo=30 Icrating=800m mfg=NXP)
+.backanno
+.end
