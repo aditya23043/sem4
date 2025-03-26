@@ -1,0 +1,15 @@
+LTspice 24.1.0 for Windows
+Circuit: Z:\mnt\hdd\repo\sem4\IE_TUT_2\Draft2.net
+Start Time: Tue Mar 25 15:42:24 2025
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 0.224 seconds.
+
+Files loaded:
+Z:\mnt\hdd\repo\sem4\IE_TUT_2\Draft2.net
+C:\users\adi\AppData\Local\LTspice\lib\cmp\standard.bjt
+
