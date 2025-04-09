@@ -1,0 +1,72 @@
+= 2025-04-04 10:17 =
+* I2C = Inter-Integrated Circuit
+* SPI = Serial Peripheral Interface
+* USART = Universal Synchronous/Asynchronous Receiver Transmitter
+
+== SPI ==
+* Pins
+	* MOSI (Tx)
+	* MISO (Rx)
+	* Clock
+	* Ground
+	* Chip Select (optional)
+	* Clock Enable (optional)
+
+* Properties
+	* Allows simultaneous bidirectional data transfer
+	* Serial Communication: Sequentially transfers data (one after the other with reference to the clock)
+
+== Communication ==
+* Serial Communication: Sequentially transfers data (one after the other with reference to the clock)
+* Parallel Communication: Sends all the data through multiple pins in a single clock cycle
+
+* Inside a computer, parallel communication is better because it has a lot of pins and sends data in a single clock (very fast) and distance is very less (~nm)
+* For developing over a dev board or in other scenarios as well, serial communication is better because of the cost of multiple cables over a certain distance (~m) and to prevent signal interference (noise)
+
+== Differential Pair ==
+* Cables like in Ethernet are so twisted together that we can safely assume that if a noise is introduced in a cable, the other one faces that noise as well and to get the pure signal back at the output, we take the subtraction of both to remove the noise
+* Twisted Pair Cables
+* Eg: USB (Universal Serial Bus), HDMI, Ethernet
+* SATA => 'S' = Differential Pair
+* We can run SPI in Differential pair but we don't because it will increase cost
+
+== Stray Capacitance ==
+* Range: ~pF
+* When we have two long wires carrying Vcc and Gnd very close by, a stray capacitance and inductance is generated 
+* At very high lengths, more current needed to charge these capacitors
+
+== Why 220V 50Hz for main? ==
+* Why US use 110V?
+* Less power loss but why?
+* Because for a load of 100k ohm, we need very less current and hence we need thin wires to carry 220V
+* Higher the voltage, thinner the wire (copper) needed to carry the voltage
+* P = I^2 * R
+* if area decreases, R increases but I will be less and since I has a quadratic term
+* The use of 110V DC in older coaches (ICF) makes it difficult for passengers to steal or repurpose train equipment, as these devices are not designed to operate on standard household AC voltages. 
+
+== UART ==
+* We assume Rx and Tx are at same potential
+* Asynchronous communication
+* Which is faster: SPI vs UART?
+* We generate an asynchronous clock which is called baudrate for UART
+
+* We set both devices's baud rate as same so that both are ready
+
+* Uses
+	* Smart Card: Sim and Debit/Credit Cards (UART kinda interface)
+	* Infrared
+	* Automotive Industry
+	* RS-232 and RS-485 (another victim of USB)
+	* In old times, we had 12V mouse
+	* Landline cables run 48V 
+		* and whenever we receive a call, we might get a 110V spike shock
+
+* Functionality
+	* Normally Tx pin is HIGH
+	* If it goes LOW, its a start bit in order to make the receiver ready
+	* Data width is defined by the Baud Rate
+	* After the first data width, the data transmission starts
+	* for a 8bit transmission, the Tx pin must go HIGH after the 8th data packet and if it doesn't then there is some problem with the current transmission
+	* note: the bits per second (baud rate) and the number of bits is fixed
+* Normally 7/8/9 bits transmission takes place in UART
+* We keep default state at HIGH and we pull it down to start communication because if the connection is broken, the pin is pulled high by default by the CMOS already and the transmission wont start if the wire is broken

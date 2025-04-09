@@ -1,0 +1,25 @@
+= ESD LECTURE USART =
+
+* Full Duplex : 2 pins, Rx and Tx
+* Half Duplex : 1 pin , Tx
+	* Pullup resistor connected so that the pin is kept HIGH in the idle case
+	* One pin used for both transmission and reception
+
+* If each data packet validation is very crucial, flow control is needed
+* Eg: In a printer, if data is not received instantly, it can be re sent, so flow control not necessarily unlike a MODEM where data packets are very crucial
+* R232 hardware flow control / handshaking
+	* Extra pins: nCTS, nRTS
+
+* UART and SPI are Push-pull type of pins
+* For Half Duplex, since the transmission direction needs to change and the pin shouldnt be left floating even for a `us`, we have a pull up resistor because internal pull up resistors are often weak
+
+* Differential pairs allow us to transmit data over longer distance
+* Tx+ connected to Rx+ and Tx- to Rx-
+* RS485 communication is very popular
+	* It utilizes half duplex mode along with differential pairs if number of cables is a constraint
+
+* Number of bits per second for asynchronous communication
+* Data packet width = transmission size / baudrate
+
+* Bit manipulation = manually switching GPIO to mimic a protocol like I2C / USART / SPI / etc. = Bit banding
+* PLL used to multiply clocks (Phase Locked Loops)
