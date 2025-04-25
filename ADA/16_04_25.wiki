@@ -1,0 +1,15 @@
+= Lecture =
+
+== Cut Problem ==
+
+*Problem*: Given a graph comnpute an (s-t)-cut whose capacity is minimum
+
+*Claim*: Given a graph a min (s-t)-cut can be computed in O(C(V+E)) where C is the total out capacity from s
+
+Scaling max flow - 7.3 section KT
+
+= PROBLEM =
+* There is a set of n people and m jobs such that every person can only do a certain type of jobs. Find an assignemtn (i.e. matching) such that max number of jobs can be done (Assignment problem)
+
+== Claim ==
+* There is a maximum matching of size k in G iff there is a max flow od unit k in G'

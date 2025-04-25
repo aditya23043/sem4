@@ -1,0 +1,45 @@
+= 2025-04-25 09:41 =
+
+== SPI ==
+* Master generates the clock signal -> SCK
+* MISO: Master-in Slave-out
+* MOSI: Master-out Slave-in
+* SS: Slave Select
+	* When there are multiple slaves in the network
+	* If there is no SS pin, the data coming from multiple slaves might get mix and hence the data on the MISO pin on the master will be corrupted or the master / slave can be burnt
+	* We cannot have HIGH and LOW simultaneously in a push pull configuration
+* Synchronous Communication
+* Operations up to $f_PCLK / 2$ (~ few MHz)
+	* Peripheral clock freq / 2
+	* Hence we can use very high frequencies
+* Simplex mode = 3 Wire SPI
+	* Used for unidirectional communication
+	* Eg: Reading values from sensor which does not require any configuration
+	* Or for driving a display
+* Clock configuration
+	* Whether to take data at rising edge of the clock or the falling edge
+* For longer distances, Async communication is better because of stray capacitance
+* For dumb devices, Synchronous communication is preferred because it doesnt require any configuration at the slave side
+* Push Pull GPIO
+
+== I2C ==
+* SDA, SCK
+* Since we can have multiple slaves and we don't have any `Slave Select` pin, there is another method to access different slaves
+* The 1st byte of data in transmission sends the address (0x3C for oled)
+* We can have multiple Masters in I2C as compared to single in SPI
+* master does the clock generation 
+* Open Drain GPIO
+	* In open drain config, there is no PMOS, the 3V3 is connected with a pull up resistor and hence if due to some software issue, both slave and master send signal, there is no need to worry about the GPIO burning out unlike SPI where gpio config is push pull 
+	* Lets say the Master sends HIGH and Slave sends LOW together. The HIGH from Master is coming from the 3V3 instead of the GPIO hence less current and the GPIOs will not get burnt
+	* But in SPI, if this happens, the current from master will be high and can get the GPIO burnt
+* Slower than SPI
+* Operations up to 400KHz in the older I2C and upto 1MHz in the newer revisions
+* Applications
+	* SMBus = System Management Bus
+	* PMBus = Power management bus
+		* Eg: Checking battery % from BMS
+
+== Endsem Syllabus ==
+* GPIO
+* Embedded Ecosystem
+* RCC
