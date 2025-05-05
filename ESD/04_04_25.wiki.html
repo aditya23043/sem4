@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>/mnt/hdd/repo/sem4/ESD/04_04_25.wiki.html</title>
+    <meta name="Generator" content="Vim/9.1" />
+    <meta name="plugin-version" content="vim9.0_v2" />
+    <meta name="syntax" content="vimwiki" />
+    <meta
+      name="settings"
+      content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=none"
+    />
+    <meta name="colorscheme" content="iceberg" />
+    <style>
+      <!--
+      pre { font-family: monospace; color: #c6c8d1; background-color: #161821; }
+      body { font-family: monospace; color: #c6c8d1; background-color: #161821; }
+      * { font-size: 1em; }
+      a { color: inherit; }
+      .Identifier { color: #89b8c2; }
+      .LineNr { color: #1f212e; background-color: #161821; padding-bottom: 1px; }
+      .Title { color: #e2a478; }
+      .Normal { color: #c6c8d1; background-color: #161821; padding-bottom: 1px; }
+      -->
+    </style>
+
+    <script>
+      <!--
+
+      /* function to open any folds containing a jumped-to line before jumping to it */
+      function JumpToLine() {
+        var lineNum;
+        lineNum = window.location.hash;
+        lineNum = lineNum.substr(1); /* strip off '#' */
+
+        if (lineNum.indexOf("L") == -1) {
+          lineNum = "L" + lineNum;
+        }
+        var lineElem = document.getElementById(lineNum);
+        /* Always jump to new location even if the line was hidden inside a fold, or
+         * we corrected the raw number to a line ID.
+         */
+        if (lineElem) {
+          lineElem.scrollIntoView(true);
+        }
+        return true;
+      }
+      if ("onhashchange" in window) {
+        window.onhashchange = JumpToLine;
+      }
+
+      -->
+    </script>
+  </head>
+  <body onload="JumpToLine();">
+    <pre id="vimCodeElement">
+<span id="L1" class="LineNr"> 1 </span><span class="Normal">=</span><span class="Title"> 2025-04-04 10:17 </span><span class="Normal">=</span>
+<span id="L2" class="LineNr"> 2 </span><span class="Identifier">* </span>I2C = Inter-Integrated Circuit
+<span id="L3" class="LineNr"> 3 </span><span class="Identifier">* </span>SPI = Serial Peripheral Interface
+<span id="L4" class="LineNr"> 4 </span><span class="Identifier">* </span>USART = Universal Synchronous/Asynchronous Receiver Transmitter
+<span id="L5" class="LineNr"> 5 </span>
+<span id="L6" class="LineNr"> 6 </span><span class="Normal">==</span><span class="Title"> SPI </span><span class="Normal">==</span>
+<span id="L7" class="LineNr"> 7 </span><span class="Identifier">* </span>Pins
+<span id="L8" class="LineNr"> 8 </span><span class="Identifier">    * </span>MOSI (Tx)
+<span id="L9" class="LineNr"> 9 </span><span class="Identifier">    * </span>MISO (Rx)
+<span id="L10" class="LineNr">10 </span><span class="Identifier">    * </span>Clock
+<span id="L11" class="LineNr">11 </span><span class="Identifier">    * </span>Ground
+<span id="L12" class="LineNr">12 </span><span class="Identifier">    * </span>Chip Select (optional)
+<span id="L13" class="LineNr">13 </span><span class="Identifier">    * </span>Clock Enable (optional)
+<span id="L14" class="LineNr">14 </span>
+<span id="L15" class="LineNr">15 </span><span class="Identifier">* </span>Properties
+<span id="L16" class="LineNr">16 </span><span class="Identifier">    * </span>Allows simultaneous bidirectional data transfer
+<span id="L17" class="LineNr">17 </span><span class="Identifier">    * </span>Serial Communication: Sequentially transfers data (one after the other with reference to the clock)
+<span id="L18" class="LineNr">18 </span>
+<span id="L19" class="LineNr">19 </span><span class="Normal">==</span><span class="Title"> Communication </span><span class="Normal">==</span>
+<span id="L20" class="LineNr">20 </span><span class="Identifier">* </span>Serial Communication: Sequentially transfers data (one after the other with reference to the clock)
+<span id="L21" class="LineNr">21 </span><span class="Identifier">* </span>Parallel Communication: Sends all the data through multiple pins in a single clock cycle
+<span id="L22" class="LineNr">22 </span>
+<span id="L23" class="LineNr">23 </span><span class="Identifier">* </span>Inside a computer, parallel communication is better because it has a lot of pins and sends data in a single clock (very fast) and distance is very less (~nm)
+<span id="L24" class="LineNr">24 </span><span class="Identifier">* </span>For developing over a dev board or in other scenarios as well, serial communication is better because of the cost of multiple cables over a certain distance (~m) and to prevent signal interference (noise)
+<span id="L25" class="LineNr">25 </span>
+<span id="L26" class="LineNr">26 </span><span class="Normal">==</span><span class="Title"> Differential Pair </span><span class="Normal">==</span>
+<span id="L27" class="LineNr">27 </span><span class="Identifier">* </span>Cables like in Ethernet are so twisted together that we can safely assume that if a noise is introduced in a cable, the other one faces that noise as well and to get the pure signal back at the output, we take the subtraction of both to remove the noise
+<span id="L28" class="LineNr">28 </span><span class="Identifier">* </span>Twisted Pair Cables
+<span id="L29" class="LineNr">29 </span><span class="Identifier">* </span>Eg: USB (Universal Serial Bus), HDMI, Ethernet
+<span id="L30" class="LineNr">30 </span><span class="Identifier">* </span>SATA =&gt; 'S' = Differential Pair
+<span id="L31" class="LineNr">31 </span><span class="Identifier">* </span>We can run SPI in Differential pair but we don't because it will increase cost
+<span id="L32" class="LineNr">32 </span>
+<span id="L33" class="LineNr">33 </span><span class="Normal">==</span><span class="Title"> Stray Capacitance </span><span class="Normal">==</span>
+<span id="L34" class="LineNr">34 </span><span class="Identifier">* </span>Range: ~pF
+<span id="L35" class="LineNr">35 </span><span class="Identifier">* </span>When we have two long wires carrying Vcc and Gnd very close by, a stray capacitance and inductance is generated
+<span id="L36" class="LineNr">36 </span><span class="Identifier">* </span>At very high lengths, more current needed to charge these capacitors
+<span id="L37" class="LineNr">37 </span>
+<span id="L38" class="LineNr">38 </span><span class="Normal">==</span><span class="Title"> Why 220V 50Hz for main? </span><span class="Normal">==</span>
+<span id="L39" class="LineNr">39 </span><span class="Identifier">* </span>Why US use 110V?
+<span id="L40" class="LineNr">40 </span><span class="Identifier">* </span>Less power loss but why?
+<span id="L41" class="LineNr">41 </span><span class="Identifier">* </span>Because for a load of 100k ohm, we need very less current and hence we need thin wires to carry 220V
+<span id="L42" class="LineNr">42 </span><span class="Identifier">* </span>Higher the voltage, thinner the wire (copper) needed to carry the voltage
+<span id="L43" class="LineNr">43 </span><span class="Identifier">* </span>P = I^2 * R
+<span id="L44" class="LineNr">44 </span><span class="Identifier">* </span>if area decreases, R increases but I will be less and since I has a quadratic term
+<span id="L45" class="LineNr">45 </span><span class="Identifier">* </span>The use of 110V DC in older coaches (ICF) makes it difficult for passengers to steal or repurpose train equipment, as these devices are not designed to operate on standard household AC voltages.
+<span id="L46" class="LineNr">46 </span>
+<span id="L47" class="LineNr">47 </span><span class="Normal">==</span><span class="Title"> UART </span><span class="Normal">==</span>
+<span id="L48" class="LineNr">48 </span><span class="Identifier">* </span>We assume Rx and Tx are at same potential
+<span id="L49" class="LineNr">49 </span><span class="Identifier">* </span>Asynchronous communication
+<span id="L50" class="LineNr">50 </span><span class="Identifier">* </span>Which is faster: SPI vs UART?
+<span id="L51" class="LineNr">51 </span><span class="Identifier">* </span>We generate an asynchronous clock which is called baudrate for UART
+<span id="L52" class="LineNr">52 </span>
+<span id="L53" class="LineNr">53 </span><span class="Identifier">* </span>We set both devices's baud rate as same so that both are ready
+<span id="L54" class="LineNr">54 </span>
+<span id="L55" class="LineNr">55 </span><span class="Identifier">* </span>Uses
+<span id="L56" class="LineNr">56 </span><span class="Identifier">    * </span>Smart Card: Sim and Debit/Credit Cards (UART kinda interface)
+<span id="L57" class="LineNr">57 </span><span class="Identifier">    * </span>Infrared
+<span id="L58" class="LineNr">58 </span><span class="Identifier">    * </span>Automotive Industry
+<span id="L59" class="LineNr">59 </span><span class="Identifier">    * </span>RS-232 and RS-485 (another victim of USB)
+<span id="L60" class="LineNr">60 </span><span class="Identifier">    * </span>In old times, we had 12V mouse
+<span id="L61" class="LineNr">61 </span><span class="Identifier">    * </span>Landline cables run 48V
+<span id="L62" class="LineNr">62 </span><span class="Identifier">        * </span>and whenever we receive a call, we might get a 110V spike shock
+<span id="L63" class="LineNr">63 </span>
+<span id="L64" class="LineNr">64 </span><span class="Identifier">* </span>Functionality
+<span id="L65" class="LineNr">65 </span><span class="Identifier">    * </span>Normally Tx pin is HIGH
+<span id="L66" class="LineNr">66 </span><span class="Identifier">    * </span>If it goes LOW, its a start bit in order to make the receiver ready
+<span id="L67" class="LineNr">67 </span><span class="Identifier">    * </span>Data width is defined by the Baud Rate
+<span id="L68" class="LineNr">68 </span><span class="Identifier">    * </span>After the first data width, the data transmission starts
+<span id="L69" class="LineNr">69 </span><span class="Identifier">    * </span>for a 8bit transmission, the Tx pin must go HIGH after the 8th data packet and if it doesn't then there is some problem with the current transmission
+<span id="L70" class="LineNr">70 </span><span class="Identifier">    * </span>note: the bits per second (baud rate) and the number of bits is fixed
+<span id="L71" class="LineNr">71 </span><span class="Identifier">* </span>Normally 7/8/9 bits transmission takes place in UART
+<span id="L72" class="LineNr">72 </span><span class="Identifier">* </span>We keep default state at HIGH and we pull it down to start communication because if the connection is broken, the pin is pulled high by default by the CMOS already and the transmission wont start if the wire is broken
+</pre>
+  </body>
+</html>
+<!-- vim: set foldmethod=manual : -->

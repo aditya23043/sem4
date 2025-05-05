@@ -1,0 +1,38 @@
+LTspice 24.1.0 for Windows
+Circuit: Z:\mnt\hdd\repo\sem4\IE\assignment.net
+Start Time: Tue Apr 29 23:57:00 2025
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration for .op point succeeded.
+Semiconductor Device Operating Points:
+                        --- MOSFET Transistors ---
+Name:           M1          M2          M3          M4
+Model:         mos1        mos2        mos3        mos4
+Id:          5.00e-03    5.00e-03    5.00e-03    5.00e-03
+Vgs:         1.71e+00    1.71e+00    1.71e+00    1.71e+00
+Vds:         1.71e+00    1.71e+00    1.71e+00    2.83e+01
+Vbs:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Vth:         1.00e+00    1.00e+00    1.00e+00    1.00e+00
+Vdsat:       7.07e-01    7.07e-01    7.07e-01    7.07e-01
+Gm:          1.41e-02    1.41e-02    1.41e-02    1.41e-02
+Gds:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Gmb:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cbd:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cbs:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cgsov:       0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cgdov:       0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cgbov:       0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cgs:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cgd:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+Cgb:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
+
+
+Total elapsed time: 0.065 seconds.
+
+Files loaded:
+Z:\mnt\hdd\repo\sem4\IE\assignment.net
+C:\users\adi\AppData\Local\LTspice\lib\cmp\standard.mos
+

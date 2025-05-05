@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>/mnt/hdd/repo/sem4/ESD/28_03_25.md.html</title>
+    <meta name="Generator" content="Vim/9.1" />
+    <meta name="plugin-version" content="vim9.0_v2" />
+    <meta name="syntax" content="markdown" />
+    <meta
+      name="settings"
+      content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=none"
+    />
+    <meta name="colorscheme" content="iceberg" />
+    <style>
+      <!--
+      pre { font-family: monospace; color: #c6c8d1; background-color: #161821; }
+      body { font-family: monospace; color: #c6c8d1; background-color: #161821; }
+      * { font-size: 1em; }
+      a { color: inherit; }
+      .Comment { color: #33384d; }
+      .LineNr { color: #1f212e; background-color: #161821; padding-bottom: 1px; }
+      .Statement { color: #84a0c6; }
+      .Error { color: #e27878; background-color: #161821; padding-bottom: 1px; }
+      .Title { color: #e2a478; }
+      -->
+    </style>
+
+    <script>
+      <!--
+
+      /* function to open any folds containing a jumped-to line before jumping to it */
+      function JumpToLine() {
+        var lineNum;
+        lineNum = window.location.hash;
+        lineNum = lineNum.substr(1); /* strip off '#' */
+
+        if (lineNum.indexOf("L") == -1) {
+          lineNum = "L" + lineNum;
+        }
+        var lineElem = document.getElementById(lineNum);
+        /* Always jump to new location even if the line was hidden inside a fold, or
+         * we corrected the raw number to a line ID.
+         */
+        if (lineElem) {
+          lineElem.scrollIntoView(true);
+        }
+        return true;
+      }
+      if ("onhashchange" in window) {
+        window.onhashchange = JumpToLine;
+      }
+
+      -->
+    </script>
+  </head>
+  <body onload="JumpToLine();">
+    <pre id="vimCodeElement">
+<span id="L1" class="LineNr"> 1 </span><span class="Comment"># </span><span class="Title">2025-03-28 09:43</span>
+<span id="L2" class="LineNr"> 2 </span>
+<span id="L3" class="LineNr"> 3 </span><span class="Comment">## </span><span class="Title">RCC</span>
+<span id="L4" class="LineNr"> 4 </span>
+<span id="L5" class="LineNr"> 5 </span><span class="Statement">-</span> Reset and Clock Control
+<span id="L6" class="LineNr"> 6 </span>
+<span id="L7" class="LineNr"> 7 </span><span class="Comment">## </span><span class="Title">CLOCK</span>
+<span id="L8" class="LineNr"> 8 </span>
+<span id="L9" class="LineNr"> 9 </span><span class="Statement">-</span> Crystal Oscillator used to generate clock signal
+<span id="L10" class="LineNr">10 </span><span class="Statement">-</span> used for time tracking
+<span id="L11" class="LineNr">11 </span><span class="Statement">-</span> 32.768 KHz generally used
+<span id="L12" class="LineNr">12 </span><span class="Statement">-</span> but why this specific value?
+<span id="L13" class="LineNr">13 </span><span class="Statement">-</span> Because since its a power of 2, we can use clock dividers to get as low as 1Hz freq
+<span id="L14" class="LineNr">14 </span>
+<span id="L15" class="LineNr">15 </span><span class="Statement">  -</span> 2^15 = 32768
+<span id="L16" class="LineNr">16 </span><span class="Statement">  -</span> more precise
+<span id="L17" class="LineNr">17 </span>
+<span id="L18" class="LineNr">18 </span><span class="Comment">### </span><span class="Title">Naming Convention</span>
+<span id="L19" class="LineNr">19 </span>
+<span id="L20" class="LineNr">20 </span><span class="Statement">-</span> HS : High speed
+<span id="L21" class="LineNr">21 </span><span class="Statement">  -</span> range: MHz
+<span id="L22" class="LineNr">22 </span><span class="Statement">-</span> LS : Low speed
+<span id="L23" class="LineNr">23 </span><span class="Statement">  -</span> range: KHz
+<span id="L24" class="LineNr">24 </span><span class="Statement">-</span> ..E : Low speed external
+<span id="L25" class="LineNr">25 </span><span class="Statement">-</span> ..I : Internal speed external
+<span id="L26" class="LineNr">26 </span>
+<span id="L27" class="LineNr">27 </span><span class="Comment">### </span><span class="Title">Precision</span>
+<span id="L28" class="LineNr">28 </span>
+<span id="L29" class="LineNr">29 </span><span class="Statement">-</span> where timing precision is not very critical (~1 second delay), there we use internal clocks
+<span id="L30" class="LineNr">30 </span><span class="Statement">  -</span> 10-20% tolerance
+<span id="L31" class="LineNr">31 </span><span class="Statement">-</span> External clocks are very very precise (~3 ppm = 3 points delay in a million units)
+<span id="L32" class="LineNr">32 </span>
+<span id="L33" class="LineNr">33 </span><span class="Statement">-</span> LSE and LSI go to RTC
+<span id="L34" class="LineNr">34 </span><span class="Statement">-</span> HSI and HSE go for microcontoller operation
+<span id="L35" class="LineNr">35 </span>
+<span id="L36" class="LineNr">36 </span><span class="Statement">-</span> Internal Clock: 8-16MHz
+<span id="L37" class="LineNr">37 </span><span class="Statement">-</span> HSI16 = 16Mhz high speed clock
+<span id="L38" class="LineNr">38 </span><span class="Statement">  -</span> 1% error
+<span id="L39" class="LineNr">39 </span><span class="Statement">  -</span> I2C, USART, LPUART, CEC and UCPD can enable the HSI16
+<span id="L40" class="LineNr">40 </span><span class="Statement">  -</span> over [0-80C] : +- 1%
+<span id="L41" class="LineNr">41 </span><span class="Statement">  -</span> startup time: 1us
+<span id="L42" class="LineNr">42 </span><span class="Statement">-</span> HSE = 4 - 48MHz
+<span id="L43" class="LineNr">43 </span><span class="Statement">  -</span> connected with OSC<span class="Error">_</span>IN and OSC<span class="Error">_</span>OUT
+<span id="L44" class="LineNr">44 </span><span class="Statement">  -</span> in order to make the clock synthesizer start to oscillate, we need to give a feedback potential
+<span id="L45" class="LineNr">45 </span>
+<span id="L46" class="LineNr">46 </span><span class="Comment">### </span><span class="Title">Failsafe</span>
+<span id="L47" class="LineNr">47 </span>
+<span id="L48" class="LineNr">48 </span><span class="Statement">-</span> Clock security system
+<span id="L49" class="LineNr">49 </span><span class="Statement">-</span> CSS is used as a backup mechanism in case of clock failiure in a MCU
+<span id="L50" class="LineNr">50 </span><span class="Statement">-</span> Note: MCU don't boot at all without clocks
+<span id="L51" class="LineNr">51 </span>
+<span id="L52" class="LineNr">52 </span><span class="Statement">-</span> AHB : Advanced High Performance Bus
+<span id="L53" class="LineNr">53 </span><span class="Statement">-</span> APB : Advanced Peripheral Bus
+<span id="L54" class="LineNr">54 </span>
+<span id="L55" class="LineNr">55 </span><span class="Comment">## </span><span class="Title">RESET</span>
+<span id="L56" class="LineNr">56 </span>
+<span id="L57" class="LineNr">57 </span><span class="Statement">-</span> Resets all registers except certain RCC register and the RTC domain
+<span id="L58" class="LineNr">58 </span><span class="Statement">-</span> Low level on the NRST pin (external reset) : like the reset push button
+<span id="L59" class="LineNr">59 </span><span class="Statement">-</span> Windows Watchdog = WWDG
+<span id="L60" class="LineNr">60 </span><span class="Statement">-</span> IWDG = another watchdog
+<span id="L61" class="LineNr">61 </span><span class="Statement">-</span> Software reset (like the BSOD on windows)
+<span id="L62" class="LineNr">62 </span><span class="Statement">-</span> Brown-out or power-on reset if the voltage goes out of bounds (either too low or high)
+<span id="L63" class="LineNr">63 </span><span class="Statement">-</span> RCC<span class="Error">_</span>CSR register (kinda like a log why the system did a reset)
+<span id="L64" class="LineNr">64 </span>
+<span id="L65" class="LineNr">65 </span><span class="Comment">### </span><span class="Title">types of resets</span>
+<span id="L66" class="LineNr">66 </span>
+<span id="L67" class="LineNr">67 </span><span class="Statement">-</span> system reset : any other reset -&gt; Software reset and push button reset
+<span id="L68" class="LineNr">68 </span><span class="Statement">-</span> power reset : if vdd does not receive enough voltage
+<span id="L69" class="LineNr">69 </span><span class="Statement">-</span> backup domain reset : when some peripherals provides power to components when vbat does not
+<span id="L70" class="LineNr">70 </span>
+<span id="L71" class="LineNr">71 </span><span class="Comment">## </span><span class="Title">STM32G0</span>
+<span id="L72" class="LineNr">72 </span>
+<span id="L73" class="LineNr">73 </span><span class="Statement">-</span> 2 internal Oscillators -&gt; HSI, LSI
+<span id="L74" class="LineNr">74 </span><span class="Statement">-</span> 2 external Oscillators -&gt; HSE, LSE
+<span id="L75" class="LineNr">75 </span><span class="Statement">-</span> 1 PLL : phase lock loop
+<span id="L76" class="LineNr">76 </span><span class="Statement">  -</span> multiplies clock like 8MHz -&gt; 16MHz
+<span id="L77" class="LineNr">77 </span><span class="Statement">  -</span> controlled using voltage controlled oscillator (VCO)
+<span id="L78" class="LineNr">78 </span><span class="Statement">-</span> many peripherals have independent clocks
+<span id="L79" class="LineNr">79 </span>
+<span id="L80" class="LineNr">80 </span><span class="Comment">## </span><span class="Title">NRST</span>
+<span id="L81" class="LineNr">81 </span>
+<span id="L82" class="LineNr">82 </span><span class="Statement">-</span> pulled to HIGH because we want reset when input goes LOW
+<span id="L83" class="LineNr">83 </span><span class="Statement">-</span> connected with shmidt trigger in order to prevent any noise from input
+</pre>
+  </body>
+</html>
+<!-- vim: set foldmethod=manual : -->

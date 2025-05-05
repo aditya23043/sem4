@@ -1,6 +1,6 @@
 LTspice 24.1.0 for Windows
 Circuit: Z:\mnt\hdd\repo\sem4\IE_TUT_3_4\question_2.net
-Start Time: Thu Apr 24 14:29:12 2025
+Start Time: Wed Apr 30 00:27:54 2025
 solver = Normal
 Maximum thread count: 16
 tnom = 27
@@ -30,7 +30,7 @@ Cgd:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
 Cgb:         0.00e+00    0.00e+00    0.00e+00    0.00e+00
 
 
-Total elapsed time: 0.068 seconds.
+Total elapsed time: 0.064 seconds.
 
 Files loaded:
 Z:\mnt\hdd\repo\sem4\IE_TUT_3_4\question_2.net
