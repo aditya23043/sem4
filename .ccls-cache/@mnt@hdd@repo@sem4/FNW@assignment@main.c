@@ -2,14 +2,25 @@
 #include <gsl/gsl_matrix.h>
 #include <gsl/gsl_vector.h>
 #include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 void print_mat(gsl_matrix *m);
 int index_mat(int i, int j, int Nside) { return i * Nside + j; }
 
 int main(int argc, char** argv) {
 
-    if (argc != 2) {
-        printf("Usage: ./a.out <number of POINTS>\n");
+    printf("%d\n", argc);
+    if (argc == 2) {
+        printf("%s\n", argv[1]);
+        if (strcmp(argv[1], "plot") == 0) {
+            system("notify-send something");
+            return 0;
+        }
+    }
+
+    if (argc != 3) {
+        printf("Usage: ./a.out <number of POINTS> <FILENAME>\n");
         exit(-1);
     }
 
@@ -69,22 +80,26 @@ int main(int argc, char** argv) {
     gsl_linalg_LU_decomp(A, p, &signum);
     gsl_linalg_LU_solve(A, p, b, x);
 
+    FILE* fp = fopen(argv[2], "w");
+
     for (int i = 0; i < Nside+2; i++) {
-        printf("%4.2d ", 10);
+        fprintf(fp, "%4.2d ", 10);
     }
-    printf("\n");
+    fprintf(fp, "\n");
 
     for (int i = 0; i < Nside; i++) {
-        printf("%4.1d ", 0);
+        fprintf(fp, "%4.1d ", 0);
         for (int j = 0; j < Nside; j++) {
-            printf("%4.2f ", gsl_vector_get(x, index_mat(i, j, Nside)));
+            fprintf(fp, "%4.2f ", gsl_vector_get(x, index_mat(i, j, Nside)));
         }
-        printf("%4.1d \n", 0);
+        fprintf(fp, "%4.1d \n", 0);
     }
     for (int i = 0; i < Nside+2; i++) {
-        printf("%4.1d ", 0);
+        fprintf(fp, "%4.1d ", 0);
     }
-    printf("\n");
+    fprintf(fp, "\n");
+
+    fclose(fp);
 
     gsl_permutation_free(p);
     gsl_matrix_free(A);
